@@ -16,4 +16,5 @@ micro service architectures, distributed blockchain applications and modern fron
                         
 Come and celebrate the future of modern commercial applications. Meet fellow developers of all experience levels. Exchange your knowledge and learn about the most exciting technologies, frameworks and stacks to work with.
 
-Since this page runs on Gatsby, Contentful and Netlify, changes are deployed when the sources or contents are changed, ftw.
+Coding Berlin was here!
+
