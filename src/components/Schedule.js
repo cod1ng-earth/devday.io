@@ -7,7 +7,7 @@ const Schedule = ({talks}) => {
     <li key={node.id}>
     {node.slotTime}
     {node.title}
-    </li>
+    </li> 
   ));
   
   return <Hero isSize="medium" isColor="success">

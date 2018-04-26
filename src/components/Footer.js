@@ -1,5 +1,6 @@
 import React from 'react'
 import { Footer, Container, Content, Columns, Column, Icon } from 'bloomer'
+import Link from "gatsby-link";
 
 const AppFooter = () => (
   <Footer id="footer" >
@@ -24,6 +25,10 @@ const AppFooter = () => (
             </p>
           </Column>
         </Columns>
+    </Container>
+    
+    <Container className="has-text-centered">
+      <Link to="/code-of-conduct" className="is-size-4">Code of Conduct</Link>
     </Container>
   </Footer>
 )

@@ -20,7 +20,7 @@ const IndexPage = ({data}) => {
               <h2 className="is-size-2">Partners</h2>
           </Container>
         </HeroBody>
-  </Hero>
+    </Hero>
     </div>;
 }
 
@@ -49,6 +49,7 @@ export const query = graphql`
     talks: allContentfulTalk {
       edges {
         node {
+          id
           title
           abstract {
             childMarkdownRemark {
