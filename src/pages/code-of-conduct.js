@@ -3,8 +3,6 @@ import Link from 'gatsby-link'
 import { Section, Container, Title, Content } from 'bloomer'
 
 const CodeOfConduct = ({data}) => {
-  console.dir(data);
-
   return <Container>
     <Section>
     <Link to="/">Go back to the homepage</Link>
