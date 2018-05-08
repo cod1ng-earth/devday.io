@@ -7,13 +7,28 @@ import About from '../components/About';
 import Schedule from '../components/Schedule';
 import Speakers from '../components/Speakers';
 
+const extractSpeakersFromTalks = talks => {
+  const speakers = [];
+  talks.forEach(talk => {
+    if (!talk.node.speaker) return;
+
+    talk.node.speaker.forEach(speaker => {
+      speakers.push(speaker);
+    })
+  });  
+  return speakers;
+} 
+
 const IndexPage = ({data}) => {
+
+  const speakers = extractSpeakersFromTalks(data.talks.edges);
+
   return <div>
     <MasterTeaser content={data.masterTeaser.html}/>
     <Tickets />
     <About content={data.about}/>
-    <Schedule talks={data.talks.edges} />
-    <Speakers speakers={data.talks.edges} />
+    <Schedule edges={data.talks.edges} />
+    <Speakers speakers={speakers} />
     <Hero isSize="medium" isColor="white">
         <HeroBody>
           <Container>
@@ -51,16 +66,37 @@ export const query = graphql`
         node {
           id
           title
-          abstract {
-            childMarkdownRemark {
-              html
-            }
-          }
           slotTime
           location
-          speakerName
-          speakerPosition
           createdAt
+          abstract {
+            childMarkdownRemark {
+              internal {
+                content
+              }
+            }
+          }
+          speaker {
+            id
+            name
+            position
+            image {
+              title
+              resolutions {
+                width
+                height
+                src
+              }
+            }
+            bio {
+              childMarkdownRemark {
+                internal {
+                  content
+                }
+              }
+            }
+          }
+          
         }
       }
     }

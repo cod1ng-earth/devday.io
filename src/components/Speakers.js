@@ -1,15 +1,14 @@
 import React from 'react'
 import { Hero, HeroBody, Container, Content, Columns, Column, Box } from 'bloomer'
+import { DateTime } from 'luxon';
 
 const Speakers = ({speakers}) => {
   
-  const speakerLis = speakers.map( ({ node }) => {
-    
-    const key = 's-' + node.id;
+  const speakerLis = speakers.map(speaker => {
+    const key = 's-' + speaker.id;
     return <li key={key}>
-      <strong>{node.speakerName}</strong> <i>{node.speakerPosition}</i>
+      <strong>{speaker.name}</strong> <i>{speaker.position}</i>
     </li>
-
   });
   
   return <Hero isSize="medium" isColor="primary">
