@@ -1,23 +1,25 @@
 import React from 'react'
-import { Hero, HeroBody, Container, Content, Columns, Column, Box } from 'bloomer'
+import { Hero, HeroBody, Image, Link, Container, Content, Columns, Column, Box } from 'bloomer'
 import { DateTime } from 'luxon';
 
 const Speakers = ({speakers}) => {
   
-  const speakerLis = speakers.map(speaker => {
-    const key = 's-' + speaker.id;
-    return <li key={key}>
-      <strong>{speaker.name}</strong> <i>{speaker.position}</i>
-    </li>
+  const speakerCols = speakers.filter( s => { return s.node.name!=null } ).map(speaker => {
+    const key = 's-' + speaker.node.id;
+    return <Column key={key} isSize='1/4' hasTextAlign="centered">
+      <Image isSize="96x96" isDisplay="inline-block" src={speaker.node.image.resolutions.src} />
+      <p><Link>{speaker.node.name}</Link></p>
+       {speaker.node.position}
+    </Column>
   });
   
   return <Hero isSize="medium" isColor="primary">
         <HeroBody>
           <Container>
               <h2 className="is-size-2">Speakers</h2>
-              <ul>
-                {speakerLis}
-              </ul>
+              <Columns isMultiline>
+              {speakerCols}
+              </Columns>
           </Container>
         </HeroBody>
   </Hero>
