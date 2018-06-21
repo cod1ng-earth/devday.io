@@ -44,7 +44,7 @@ const Schedule = ({edges}) => {
     </Columns> 
   });
   
-  return <Hero isSize="medium" isColor="success">
+  return <Hero isSize="medium" isColor="dark">
         <HeroBody>
           <Container>
               <h2 className="is-size-2">Schedule</h2>
