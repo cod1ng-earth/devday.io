@@ -8,7 +8,7 @@ const Speakers = ({speakers}) => {
     const key = 's-' + speaker.node.id;
     return <Column key={key} isSize='1/4' hasTextAlign="centered">
       <Image isSize="96x96" isDisplay="inline-block" src={speaker.node.image.resolutions.src} />
-      <p><Link>{speaker.node.name}</Link></p>
+      <p>{speaker.node.name}</p>
        {speaker.node.position}
     </Column>
   });
