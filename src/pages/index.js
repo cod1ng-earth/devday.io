@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Container, Title, Hero, HeroBody } from 'bloomer'
 import MasterTeaser from '../components/MasterTeaser';
-import Tickets from '../components/Tickets';
+import StatsRibbon from '../components/StatsRibbon';
 import About from '../components/About';
 import Schedule from '../components/Schedule';
 import Speakers from '../components/Speakers';
@@ -11,7 +11,7 @@ const IndexPage = ({data}) => {
   
   return <div>
     <MasterTeaser content={data.masterTeaser.html}/>
-    <Tickets />
+    <StatsRibbon />
     <About content={data.about}/>
     <Schedule edges={data.talks.edges} />
     <Speakers speakers={data.speakers.edges} />

@@ -18,33 +18,28 @@ body {
 }
 
 #section-master-teaser {
-    font-size: $size-4;
-    h2, h3 {
+    text-align: center;
+    h1 {
+        font-size: $size-1;
+        small {
+            font-size: $size-3;
+            display: block;
+        }
+    }
+    h2 {
         font-weight: 800;
         margin-top:0 !important;
         margin-bottom: 0 !important;
     }
-    h4 {
-        margin-top:$size-3;
-        font-weight: 400;
-    }
-    h3 {
-        color: $white;
-        margin:0 !important;
-    }
-    h2,h4 {
+    
+    h2 {
         color: $secondary;
     }
-    img {
-        max-height:60vw;
-    }
-    blockquote {
-        border: none;
-        background: transparent;
-        padding: $size-3 0;
-        font-size: $size-5;
-    }
 
+    .hero-body {
+        background-color: rgba(50,50,45,0.6);
+        //background: radial-gradient(circle farthest-side at right bottom, #0000CC 5%, #0000FF 25%, #0000FF 80%, #5D00FF 98%) repeat scroll 0% 0%, linear-gradient(-45deg, #0000FF 33%, transparent 50%), linear-gradient(-45deg, #0044FF 67%, transparent 50%), linear-gradient(-45deg, #0000FF 100%, transparent 80%);
+    }
 }
 
 #section-about {
