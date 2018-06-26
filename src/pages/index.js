@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { Children } from 'react'
 import Link from 'gatsby-link'
-import { Container, Title, Hero, HeroBody } from 'bloomer'
+import { Container, Title, Hero, HeroBody, Image, Column, Columns, Media, MediaLeft, MediaContent, Content } from 'bloomer'
 import MasterTeaser from '../components/MasterTeaser';
 import StatsRibbon from '../components/StatsRibbon';
-import About from '../components/About';
-import Schedule from '../components/Schedule';
-import Speakers from '../components/Speakers';
+import Talks from '../components/Talks';
+//import Schedule from '../components/Schedule';
+//import Speakers from '../components/Speakers';
+
 
 const IndexPage = ({data}) => {
   
   return <div>
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
-    <About content={data.about}/>
-    <Schedule edges={data.talks.edges} />
-    <Speakers speakers={data.speakers.edges} />
+    <Talks talks={data.talks.edges}/>
+    <Hero isSize="medium" isColor="white">
+      <HeroBody>
+          <Container> 
+            <h2 className="is-size-2">Impressions</h2>
+          </Container>
+        </HeroBody>
+    </Hero>   
     <Hero isSize="medium" isColor="white">
         <HeroBody>
           <Container>
@@ -87,7 +93,7 @@ export const query = graphql`
             position
             image {
               title
-              resolutions {
+              resolutions(width: 320) {
                 width
                 height
                 src
@@ -95,10 +101,8 @@ export const query = graphql`
             }
             bio {
               childMarkdownRemark {
-                internal {
-                  content
-                }
-              }
+                html
+              } 
             }
           }
           
