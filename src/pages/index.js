@@ -5,6 +5,7 @@ import MasterTeaser from '../components/MasterTeaser';
 import StatsRibbon from '../components/StatsRibbon';
 import Talks from '../components/Talks';
 import Impressions from '../components/Impressions';
+import Newsletter from '../components/Newsletter';
 
 const IndexPage = ({data}) => {
 
@@ -12,14 +13,11 @@ const IndexPage = ({data}) => {
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
     <Talks talks={data.talks.edges}/>
-    <Hero isSize="medium" isColor="white">
-      <HeroBody>
-          <Container> 
-            <h2 className="is-size-2">Impressions</h2>
-            <Impressions images={data.impressions.edges} />
-          </Container>
-        </HeroBody>
-    </Hero>   
+    
+    <Impressions images={data.impressions.edges} />
+    
+    <Newsletter />
+
     <Hero isSize="medium" isColor="white">
         <HeroBody>
           <Container style={{width: "100%"}}>
@@ -52,7 +50,7 @@ export const query = graphql`
       }
     }
 
-    impressions: allCloudinaryImage {
+    impressions: allCloudinaryImage(limit:4) {
       edges {
         node {
           width

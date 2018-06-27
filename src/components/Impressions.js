@@ -35,39 +35,44 @@ export default class Impressions extends React.Component {
         const lbImgs = this.props.images.map(i => i.node.secure_url);
         const { photoIndex, isOpen } = this.state;
 
-        return <div>
-            <StackGrid 
-                columnWidth={320} duration={600} monitorImagesLoaded={true} appearDelay={150}
-                appear={scaleDown.appear}
-                appeared={scaleDown.appeared}
-                enter={scaleDown.enter}
-                entered={scaleDown.entered}
-                leaved={scaleDown.leaved}
-            >
-            {imgs}
-            </StackGrid>
+        return <Hero isSize="medium" isColor="white">
+                <HeroBody>
+                    <Container> 
+                        
+                        <h2 className="is-size-2">Impressions</h2>
 
-            {isOpen && (
-          <Lightbox
-            mainSrc={lbImgs[photoIndex]}
-            nextSrc={lbImgs[(photoIndex + 1) % lbImgs.length]}
-            prevSrc={lbImgs[(photoIndex + lbImgs.length - 1) % lbImgs.length]}
-            onCloseRequest={() => this.setState({ isOpen: false })}
-            onMovePrevRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + lbImgs.length - 1) % lbImgs.length,
-              })
-            }
-            onMoveNextRequest={() =>
-              this.setState({
-                photoIndex: (photoIndex + 1) % lbImgs.length,
-              })
-            }
-            imageTitle={captions[photoIndex]}
-            enableZoom={true}
-          />
-        )}
-    </div>
+                        <StackGrid 
+                            columnWidth={320} duration={600} monitorImagesLoaded={true} appearDelay={150}
+                            appear={scaleDown.appear}
+                            appeared={scaleDown.appeared}
+                            enter={scaleDown.enter}
+                            entered={scaleDown.entered}
+                            leaved={scaleDown.leaved}
+                        >{imgs}</StackGrid>
+
+                        {isOpen && (
+                        <Lightbox
+                            mainSrc={lbImgs[photoIndex]}
+                            nextSrc={lbImgs[(photoIndex + 1) % lbImgs.length]}
+                            prevSrc={lbImgs[(photoIndex + lbImgs.length - 1) % lbImgs.length]}
+                            onCloseRequest={() => this.setState({ isOpen: false })}
+                            onMovePrevRequest={() =>
+                            this.setState({
+                                photoIndex: (photoIndex + lbImgs.length - 1) % lbImgs.length,
+                            })
+                            }
+                            onMoveNextRequest={() =>
+                            this.setState({
+                                photoIndex: (photoIndex + 1) % lbImgs.length,
+                            })
+                            }
+                            imageTitle={captions[photoIndex]}
+                            enableZoom={true}
+                        />
+                    )}
+                    </Container>
+                </HeroBody>
+            </Hero>   
     }
   
 }
