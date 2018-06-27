@@ -34,7 +34,7 @@ const Speakers = ({speakers}) => {
         <div className="accordion-body">
           <div className="accordion-content">
             <Speakers speakers={talk.speaker} />
-            {talk.abstract.childMarkdownRemark.internal.content}
+            <Content dangerouslySetInnerHTML={{__html: talk.abstract.childMarkdownRemark.html}} />
           </div>
         </div>
       </article>

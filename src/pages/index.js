@@ -4,12 +4,10 @@ import { Container, Title, Hero, HeroBody, Image, Column, Columns, Media, MediaL
 import MasterTeaser from '../components/MasterTeaser';
 import StatsRibbon from '../components/StatsRibbon';
 import Talks from '../components/Talks';
-//import Schedule from '../components/Schedule';
-//import Speakers from '../components/Speakers';
-
+import Impressions from '../components/Impressions';
 
 const IndexPage = ({data}) => {
-  
+
   return <div>
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
@@ -18,12 +16,13 @@ const IndexPage = ({data}) => {
       <HeroBody>
           <Container> 
             <h2 className="is-size-2">Impressions</h2>
+            <Impressions images={data.impressions.edges} />
           </Container>
         </HeroBody>
     </Hero>   
     <Hero isSize="medium" isColor="white">
         <HeroBody>
-          <Container>
+          <Container style={{width: "100%"}}>
               <h2 className="is-size-2">Partners</h2>
           </Container>
         </HeroBody>
@@ -53,23 +52,29 @@ export const query = graphql`
       }
     }
 
-    speakers: allContentfulSpeaker {
-        edges {
-          node {
-            id
-            name
-            position
-            bio {
-              bio
-            }
-            image {
-              id
-              resolutions {
-                src
-              }
+    impressions: allCloudinaryImage {
+      edges {
+        node {
+          width
+          height
+          secure_url
+          public_id
+          type
+          format
+          scaled_image_url
+          thumb_dims {
+            w
+            h
+          }
+          context {
+            custom {
+              alt
+              caption
             }
           }
+          tags
         }
+      }
     }
 
     talks: allContentfulTalk {
@@ -79,12 +84,15 @@ export const query = graphql`
           title
           slotTime
           location
-          createdAt
+          highlights {
+            highlights
+          }
+          statement {
+            statement
+          }
           abstract {
             childMarkdownRemark {
-              internal {
-                content
-              }
+              html
             }
           }
           speaker {
