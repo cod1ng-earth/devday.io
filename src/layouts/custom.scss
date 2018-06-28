@@ -53,6 +53,11 @@ body {
     }
 }
 
+#section-newsletter {
+    label {
+        color: $white-ter;
+    }
+}
 footer.footer {
    background: $primary; 
    color: $white;
