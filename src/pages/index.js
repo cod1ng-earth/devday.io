@@ -75,7 +75,7 @@ export const query = graphql`
       }
     }
 
-    talks: allContentfulTalk {
+    talks: allContentfulTalk(sort: {fields: [slotTime], order: ASC}) {
       edges {
         node {
           id

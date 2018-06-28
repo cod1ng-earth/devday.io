@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import 'font-awesome/css/font-awesome.css'
-import './all.sass'
+import '../style/all.sass'
 
 import {
   Container,

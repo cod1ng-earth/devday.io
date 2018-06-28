@@ -1,0 +1,27 @@
+.accordions .accordion {
+    .accordion-header {
+        background-color: $dark;
+        padding: $size-4 $size-5;
+        font-size: $size-6;
+        button.toggle {
+            &::before {
+                font-size: $size-4; 
+                font-family: "Font Awesome 5 Free";
+                content: "\f107";
+            }
+            &:hover {
+                &::before {
+                    font-size: $size-4 + 0.3rem;
+                }
+                
+            }
+        }
+    }
+    &.is-active {
+        .accordion-header button.toggle {
+            &::before {
+                content: "\f106";
+            }
+        }
+    }
+}
