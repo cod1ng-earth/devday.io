@@ -18,6 +18,9 @@
         }
     }
     &.is-active {
+        .accordion-body {
+            max-height: 150em;
+        }
         .accordion-header button.toggle {
             &::before {
                 content: "\f106";

@@ -82,6 +82,7 @@ export const query = graphql`
           title
           slotTime
           location
+          youtubeUrl
           highlights {
             highlights
           }
