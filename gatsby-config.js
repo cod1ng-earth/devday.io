@@ -1,3 +1,13 @@
+let activeEnv = process.env.ACTIVE_ENV;
+
+if (!activeEnv) {
+  activeEnv = "development";
+}
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: 'Dev Day 2018',
@@ -15,17 +25,17 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `wufm80vssyv2`,
-        accessToken: `aa8416267bc238405ede287575fd0097b586563c5e004771edaf0ef7081a67d6`,
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN
       },
     },
     'gatsby-transformer-remark',
     {
       resolve: "gatsby-source-cloudinary",
       options: {
-        api_key: "367738384345219",
-        api_secret: "vdrGaqPCUv0WyMHz75nJtA76uoA",
-        cloud_name: "turbinekreuzberg",
+        api_key: process.env.GATSBY_CLOUDINARY_API_KEY,
+        api_secret: process.env.GATSBY_CLOUDINARY_API_SECRET,
+        cloud_name: process.env.GATSBY_CLOUDINARY_CLOUD_NAME,
       },
     }
     
