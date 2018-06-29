@@ -1,7 +1,7 @@
 .accordions .accordion {
     .accordion-header {
         background-color: $dark;
-        padding: $size-4 $size-5;
+        padding: $size-4 0;
         font-size: $size-6;
         button.toggle {
             &::before {

@@ -63,7 +63,7 @@ const Speakers = ({speakers}) => {
         return <Talk key={talk.id} talk={talk} isActive={q++==0}></Talk>
       });
   
-      return <Hero>
+      return <Hero isColor="dark">
                 <HeroBody>
                     <Container>
                         <h2 className="is-size-2">Talks</h2>
