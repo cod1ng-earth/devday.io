@@ -66,6 +66,7 @@ const Speakers = ({speakers}) => {
       return <Hero isColor="dark">
                 <HeroBody>
                     <Container>
+                        <a name="talks"></a>
                         <h2 className="is-size-2">Talks</h2>
               
                         <section className="accordions" id="section-talks" ref={(accs) => { this.accordions = accs; }}>

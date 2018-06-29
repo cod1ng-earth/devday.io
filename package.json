@@ -10,7 +10,6 @@
     "bulma-checkradio": "^2.1.0",
     "font-awesome": "^4.7.0",
     "gatsby": "^1.9.259",
-    "gatsby-link": "^1.6.41",
     "gatsby-plugin-catch-links": "^1.0.19",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "gatsby-plugin-sass": "1.0.19",
@@ -20,11 +19,10 @@
     "lightbox-react": "^0.1.6",
     "lodash.map": "^4.6.0",
     "luxon": "^1.2.0",
-    "react-grid-gallery": "^0.5.0",
     "react-helmet": "^5.2.0",
     "react-responsive-embed": "^2.1.0",
-    "react-stack-grid": "^0.7.1",
-    "smooth-scroll": "^12.1.5"
+    "react-scroll": "^1.7.9",
+    "react-stack-grid": "^0.7.1"
   },
   "keywords": [
     "gatsby"

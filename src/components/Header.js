@@ -1,8 +1,7 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import { Container, Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarStart, NavbarLink, NavbarDropdown, NavbarDivider, NavbarEnd, Icon, Field, Control, Button } from 'bloomer'
-const brand = "";
-
+import { Container, Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarStart, NavbarEnd, Icon, Field, Control, Button } from 'bloomer'
+import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+ 
 export default class AppHeader extends React.Component {
 
   constructor(props) {
@@ -35,7 +34,6 @@ export default class AppHeader extends React.Component {
   render() {
     return <Navbar className={(this.state.scrollPos < 400 ? "is-transparent" : "is-small") + " is-primary is-fixed-top"}>
       <NavbarBrand>
-          
           <NavbarItem className="logo_comp">
               <span className="logo_comp_dev">Dev</span>
               <span className="logo_comp_day">Day</span>
@@ -49,10 +47,15 @@ export default class AppHeader extends React.Component {
         </NavbarStart>
 
         <NavbarEnd>
-            <NavbarItem href='#/'>Event</NavbarItem>
-            <NavbarItem href='#/'>Speakers</NavbarItem>
-            <NavbarItem href='#/'>Venue</NavbarItem>
-            <NavbarItem href='#/'>Contact</NavbarItem>
+          
+          <Link className="navbar-item" activeClass="active" to="talks" spy={true} smooth={true} offset={-100} duration={500}>
+            Talks
+          </Link>
+          
+          <Link className="navbar-item" activeClass="active" to="impressions" spy={true} smooth={true} offset={-100} duration={500}>
+            Impressions
+          </Link>
+          
         </NavbarEnd>
 
       </NavbarMenu>

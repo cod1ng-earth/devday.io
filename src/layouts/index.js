@@ -18,12 +18,6 @@ import AppHeader from '../components/Header'
 import MasterTeaser from '../components/MasterTeaser'
 import AppFooter from '../components/Footer'
 
-if (typeof window !== 'undefined') {
-  // Make scroll behavior of internal links smooth
-  // eslint-disable-next-line global-require
-  require('smooth-scroll')('a[href*="#"]');
-}
-
 const TemplateWrapper = ({ children }) => (
   <div> 
     <Helmet title="Dev Day 2018" />
