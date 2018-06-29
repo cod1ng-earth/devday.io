@@ -35,42 +35,43 @@ export default class Impressions extends React.Component {
         const lbImgs = this.props.images.map(i => i.node.secure_url);
         const { photoIndex, isOpen } = this.state;
 
-        return <Hero isSize="medium" isColor="white">
+        return <Hero isSize="small" isColor="white" id="section-impressions">
                 <HeroBody>
-                    <Container> 
-                        <a name="impressions"></a>
-                        <h2 className="is-size-2">Impressions</h2>
-
-                        <StackGrid 
-                            columnWidth={320} duration={600} monitorImagesLoaded={true} appearDelay={150}
-                            appear={scaleDown.appear}
-                            appeared={scaleDown.appeared}
-                            enter={scaleDown.enter}
-                            entered={scaleDown.entered}
-                            leaved={scaleDown.leaved}
-                        >{imgs}</StackGrid>
-
-                        {isOpen && (
-                        <Lightbox
-                            mainSrc={lbImgs[photoIndex]}
-                            nextSrc={lbImgs[(photoIndex + 1) % lbImgs.length]}
-                            prevSrc={lbImgs[(photoIndex + lbImgs.length - 1) % lbImgs.length]}
-                            onCloseRequest={() => this.setState({ isOpen: false })}
-                            onMovePrevRequest={() =>
-                            this.setState({
-                                photoIndex: (photoIndex + lbImgs.length - 1) % lbImgs.length,
-                            })
-                            }
-                            onMoveNextRequest={() =>
-                            this.setState({
-                                photoIndex: (photoIndex + 1) % lbImgs.length,
-                            })
-                            }
-                            imageTitle={captions[photoIndex]}
-                            enableZoom={true}
-                        />
-                    )}
+                    <a name="impressions"></a>
+                    <Container>
+                    <h2 className="is-size-2">Impressions</h2>
                     </Container>
+
+                    <StackGrid 
+                        columnWidth={320} duration={600} monitorImagesLoaded={true} appearDelay={150}
+                        appear={scaleDown.appear}
+                        appeared={scaleDown.appeared}
+                        enter={scaleDown.enter}
+                        entered={scaleDown.entered}
+                        leaved={scaleDown.leaved}
+                    >{imgs}</StackGrid>
+
+                    {isOpen && (
+                    <Lightbox
+                        mainSrc={lbImgs[photoIndex]}
+                        nextSrc={lbImgs[(photoIndex + 1) % lbImgs.length]}
+                        prevSrc={lbImgs[(photoIndex + lbImgs.length - 1) % lbImgs.length]}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                        onMovePrevRequest={() =>
+                        this.setState({
+                            photoIndex: (photoIndex + lbImgs.length - 1) % lbImgs.length,
+                        })
+                        }
+                        onMoveNextRequest={() =>
+                        this.setState({
+                            photoIndex: (photoIndex + 1) % lbImgs.length,
+                        })
+                        }
+                        imageTitle={captions[photoIndex]}
+                        enableZoom={true}
+                    />
+                )}
+                    
                 </HeroBody>
             </Hero>   
     }
