@@ -50,7 +50,7 @@ export const query = graphql`
       }
     }
 
-    impressions: allCloudinaryImage(limit:4) {
+    impressions: allCloudinaryImage(sort: {fields: [bytes], order: ASC})  {
       edges {
         node {
           width

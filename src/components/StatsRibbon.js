@@ -2,18 +2,21 @@ import React from 'react'
 import { Hero, HeroBody, Container, Content, Columns, Column, Box, Button } from 'bloomer'
 
 export default ({content}) => {
-return <Hero isSize="small" isColor="primary">
+return <Hero isSize="small" isColor="primary" id="section-stats-ribbon">
         <HeroBody>
         <Container>
-            <Columns isCentered> 
-                <Column >
-                328 attendees
+            <Columns > 
+                <Column hasTextAlign="centered">
+                <figure>260</figure> attendees
                 </Column>
-                <Column>
-                    450 club mates
+                <Column hasTextAlign="centered">
+                    <figure>15</figure> speakers
                 </Column>
-                <Column>
-                    3 best speakers
+                <Column hasTextAlign="centered">
+                    <figure>10</figure> talks
+                </Column>
+                <Column hasTextAlign="centered">
+                    <figure>3</figure> winners
                 </Column>
             </Columns>
         </Container>
