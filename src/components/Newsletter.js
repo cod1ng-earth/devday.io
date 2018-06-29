@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero, HeroBody, Container, Title, Field, Label, Control, Input, Radio, Button } from 'bloomer'
+import { Hero, HeroBody, Container, Columns, Column, Title, Field, Label, Control, Input, Radio, Button } from 'bloomer'
 
 
 export default ({ content }) => (
@@ -7,9 +7,10 @@ export default ({ content }) => (
   <Hero isSize="medium" isColor="dark" id="section-newsletter">
     <HeroBody>
       <Container>
+        
+        <Columns id="mc_embed_signup">
+          <Column isSize="1/2" isOffset="1/4" id="mc_embed_signup_scroll">
 
-        <div id="mc_embed_signup">
-          <div id="mc_embed_signup_scroll">
           <Title isSize={2}>Subscribe to our mailing list</Title>
                     
             <form action="https://turbinekreuzberg.us11.list-manage.com/subscribe/post?u=05926695701a0c84bb46a9565&amp;id=590c4918b0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
@@ -73,8 +74,8 @@ export default ({ content }) => (
               </Field>
 
             </form>
-          </div>
-        </div>
+          </Column>
+        </Columns>
 
         </Container>
       </HeroBody>
