@@ -12,9 +12,11 @@ const MasterTeaser = ({content}) => {
     backgroundPositionX: "50%"
   
   };
-  return <Hero id="section-master-teaser" isSize="medium" isColor="primary" className="bg-texture" style={bodyStyles}>
-        <HeroBody>
+  return <Hero id="section-master-teaser" isSize="large" isColor="primary" className="bg-texture">
+        <HeroBody >
+          <img src={keyVisual} className="key-visual" />
           <Container >
+            
             <h1>Dev Day 2018: <strong>Revisited</strong>
               <small>Celebrating Software Craftsmanship</small>
             </h1>

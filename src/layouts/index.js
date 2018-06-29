@@ -25,7 +25,7 @@ if (typeof window !== 'undefined') {
 }
 
 const TemplateWrapper = ({ children }) => (
-  <div className="has-navbar-fixed-top"> 
+  <div> 
     <Helmet title="Dev Day 2018" />
       <AppHeader />
       {children()}

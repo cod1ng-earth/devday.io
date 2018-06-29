@@ -7,7 +7,7 @@ body {
     font-size: 18px;
 }
 
-.bg-texture{
+.bg-texture {
      background: transparent radial-gradient(circle farthest-side at right bottom, #0000CC 5%, #0000FF 25%, #0000FF 80%, #5D00FF 98%) repeat scroll 0% 0%;
      &-collage{
         background: #0000FF;
@@ -18,16 +18,9 @@ body {
         }
     }
 }
-
-footer.footer {
-   background: $primary; 
-   color: $white;
-   a {
-       color: $white;
-   }
-}
-
 @import "components/accordion";
+@import "components/header";
+@import "components/footer";
 
 @import "master-teaser";
 @import "stats-ribbon";

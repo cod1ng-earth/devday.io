@@ -8,9 +8,22 @@ export default class AppHeader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isActive: false
+      isActive: false,
+      scrollPos: 0
     }
     this.onClickNav = this.onClickNav.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  handleScroll(e) {
+    this.setState({scrollPos: window.scrollY })
   }
 
   onClickNav() {
@@ -20,10 +33,12 @@ export default class AppHeader extends React.Component {
   }
 
   render() {
-    return <Navbar style={{  }} className="is-primary is-fixed-top">
+    return <Navbar className={(this.state.scrollPos < 400 ? "is-transparent" : "is-small") + " is-primary is-fixed-top"}>
       <NavbarBrand>
-          <NavbarItem>
-              <img src={brand} style={{ }} /> devday
+          
+          <NavbarItem className="logo_comp">
+              <span className="logo_comp_dev">Dev</span>
+              <span className="logo_comp_day">Day</span>
           </NavbarItem>
           <NavbarBurger isActive={this.state.isActive} onClick={this.onClickNav} />
       </NavbarBrand>

@@ -1,0 +1,45 @@
+nav.navbar {
+    &.is-transparent {
+        background: none;
+    }
+    &.is-small {
+        .logo_comp {
+            font-size: 2rem; 
+        }
+    }
+}
+
+.logo_comp {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-left: -2rem;
+    @include from($tablet) {
+        font-size: 3rem; 
+    }
+    @include from($desktop) {
+        font-size: 4rem; 
+    }
+    transform: perspective(300px) translateZ(-30px) rotateX(5deg) rotateY(-50deg);
+    &_dev, &_day {
+        transition: all ease-in-out 0.3s;
+    }
+    .logo_comp_dev {
+        transform:perspective(200px) translateY(-2px) rotateX(35deg);
+    }
+    
+    .logo_comp_day {
+        transform:perspective(200px) rotateX(-35deg);
+    }
+
+    &:hover {
+        .logo_comp_dev {
+            transform: perspective(200px) rotateX(-35deg) translateX(10px);
+        }
+        .logo_comp_day {
+            transform: perspective(200px) rotateX(35deg) translateX(10px);
+        }
+    }
+
+}
+
