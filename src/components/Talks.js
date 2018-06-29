@@ -25,7 +25,6 @@ const Speakers = ({speakers}) => {
     </Columns>
   }
   
-
   const Talk = ({talk, isActive}) => (
     <article className={"accordion " + (isActive ? 'is-active' : '') }>
         <div className="accordion-header toggle">
@@ -35,8 +34,10 @@ const Speakers = ({speakers}) => {
         <div className="accordion-body">
           <div className="accordion-content">
             <Speakers speakers={talk.speaker} />
+            <blockquote>{talk.highlights.highlights}</blockquote>
             <Content dangerouslySetInnerHTML={{__html: talk.abstract.childMarkdownRemark.html}} />
-            {talk.youtubeUrl && 
+            <blockquote>{talk.statement.statement}</blockquote>
+            {talk.youtubeUrl && isActive &&
               <ResponsiveEmbed src={talk.youtubeUrl} allowFullScreen />
             }
           </div>
@@ -45,7 +46,6 @@ const Speakers = ({speakers}) => {
     );
   
   export default class Talks extends React.Component {
-  
     
     componentDidMount() {
       const acc = new bulmaAccordion(this.accordions)
