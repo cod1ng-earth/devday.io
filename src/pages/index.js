@@ -6,7 +6,7 @@ import StatsRibbon from '../components/StatsRibbon';
 import Talks from '../components/Talks';
 import Impressions from '../components/Impressions';
 import Newsletter from '../components/Newsletter';
-import CodingChallenge from '../components/CodingChallenge';
+import CodingChallenge from '../components/CodingChallenge/CodingChallenge';
 
 const IndexPage = ({data}) => {
 
@@ -14,7 +14,8 @@ const IndexPage = ({data}) => {
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
     
-    <CodingChallenge leaderBoard={data.leaderBoard.edges}/>
+    <CodingChallenge leaderBoard={data.leaderBoard.edges} challenges={data.challenges.edges}/>
+
     <Talks talks={data.talks.edges}/>
     
     <Impressions images={data.impressions.edges} />
@@ -87,7 +88,17 @@ export const query = graphql`
           country
         }
       }
-    }
+    },
+
+    challenges: allCodingChallengeChallengesJson {
+      edges {
+        node {
+          name,
+          path,
+          difficulty
+        }
+      }
+    },
 
     talks: allContentfulTalk(sort: {fields: [slotTime], order: ASC}) {
       edges {

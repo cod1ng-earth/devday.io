@@ -1,0 +1,47 @@
+[
+   {
+       "name": "Contacts",
+       "path": "contacts",
+       "difficulty": "Medium"
+   },
+   {
+       "name": "Hackerland Radio Transmitters",
+       "path": "hackerland-radio-transmitters",
+       "difficulty": "Medium"
+   },
+   {
+       "name": "Ice Cream Parlor",
+       "path": "icecream-parlor",
+       "difficulty": "Easy"
+   },
+   {
+       "name": "Journey to the Moon",
+       "path": "journey-to-the-moon",
+       "difficulty": "Medium"
+   },
+   {
+       "name": "Candies",
+       "path": "candies",
+       "difficulty": "Medium"
+   },
+   {
+       "name": "Ema's Supercomputer",
+       "path": "two-pluses",
+       "difficulty": "Medium"
+   },
+   {
+       "name": "Laptop Battery Life",
+       "path": "battery",
+       "difficulty": "Easy"
+   },
+   {
+       "name": "StockPredictions",
+       "path": "stockprediction",
+       "difficulty": "Easy"
+   },
+   {
+       "name": "Connected Cells in a Grid",
+       "path": "connected-cell-in-a-grid",
+       "difficulty": "Medium"
+   }
+]

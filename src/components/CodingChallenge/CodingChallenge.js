@@ -1,42 +1,14 @@
 import React from 'react'
 import { Hero, HeroBody, Container, Table, Level, LevelItem, LevelRight, LevelLeft, Tabs, TabList, TabLink, Tab } from 'bloomer'
-
-const Leaderboard = ({ leaderBoard }) => {
-    let idx = 1;
-
-    const trEntries = leaderBoard.map(entry => (
-        <tr key={'u-user' + idx}>
-            <td>{idx++}</td>
-            <td>{entry.node.user}</td>
-            <td>{entry.node.score}</td>
-            <td>{entry.node.time}</td>
-            <td><img src={"/img/flags/" + entry.node.country + ".png"} /></td>
-        </tr>
-    ));
-
-    return <Table isBordered isStriped isFullWidth>
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>User</th>
-                <th>Score</th>
-                <th>Time</th>
-                <th>Country</th>
-            </tr>
-        </thead>
-        <tbody>
-            {trEntries}
-        </tbody>
-    </Table>;
-}
+import LeaderBoard from './LeaderBoard';
+import Challenges from './Challenges';
 
 export default class CodingChallenge extends React.Component {
 
-    constructor({props, data}) {
-    console.dir(data);
+    constructor(props) {
         super(props);
         this.state = {
-            activeTab: 'leaderboard'
+            activeTab: 'Challenges'
         }
     }
     
@@ -59,17 +31,18 @@ export default class CodingChallenge extends React.Component {
 
                     <Tabs isBoxed>
                         <TabList>
-                            <Tab  >
+                            
+                            <Tab className={this.state.activeTab == 'LeaderBoard' ? 'is-active' : ''} onClick={() => this.setState({activeTab: 'LeaderBoard'}) } >
                                 <TabLink>
                                     <span>Leaderboard</span>
                                 </TabLink>
                             </Tab>
-                            <Tab>
+                            <Tab className={this.state.activeTab == 'Challenges' ? 'is-active' : ''} onClick={() =>  this.setState({activeTab: 'Challenges'}) } >
                                 <TabLink>
                                     <span>Challenges</span>
                                 </TabLink>
                             </Tab>
-                            <Tab >
+                            <Tab className={this.state.activeTab == 'Prizes' ? 'is-active' : ''} onClick={() =>  this.setState({activeTab: 'Prizes'}) } >
                                 <TabLink>
                                     <span>Prizes</span>
                                 </TabLink>
@@ -77,7 +50,9 @@ export default class CodingChallenge extends React.Component {
                         </TabList>
                     </Tabs>
 
-                    <Leaderboard leaderBoard={this.props.leaderBoard} />
+                    {this.state.activeTab == 'LeaderBoard' &&  <LeaderBoard leaderBoard={this.props.leaderBoard} /> }
+                    {this.state.activeTab == 'Challenges' &&  <Challenges challenges={this.props.challenges} /> }
+                    
                 </Container>
             </HeroBody>
         </Hero>
