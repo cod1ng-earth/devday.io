@@ -14,7 +14,9 @@ export default ({ leaderBoard }) => {
         </tr>
     ));
 
-    return <Table isBordered isStriped isFullWidth>
+    return <div>
+                        
+    <Table  isStriped isFullWidth>
         <thead>
             <tr>
                 <th>Rank</th>
@@ -27,5 +29,7 @@ export default ({ leaderBoard }) => {
         <tbody>
             {trEntries}
         </tbody>
-    </Table>;
+    </Table>
+    <a href="https://www.hackerrank.com/contests/devday-2018/leaderboard/1" target="_blank" className="has-text-right">full leaderboard</a>
+    </div>;
 }

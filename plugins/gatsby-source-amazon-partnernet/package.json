@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-source-cloudinary",
+  "name": "gatsby-source-amazon-partnernet",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cloudinary": "^1.11.0",
-    "node-fetch": "^2.1.2",
-    "query-string": "^6.1.0"
+    "apac": "^3.0.2",
+    "crypto": "^1.0.1"
   }
 }

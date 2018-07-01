@@ -1,37 +1,25 @@
 import React from 'react'
-import { Hero, HeroBody, Container, Table, Level, LevelItem, LevelRight, LevelLeft, Tabs, TabList, TabLink, Tab } from 'bloomer'
+import { Container, Section, Table, Level, LevelItem, LevelRight, LevelLeft, Tabs, TabList, TabLink, Tab } from 'bloomer'
 import LeaderBoard from './LeaderBoard';
 import Challenges from './Challenges';
+import AmazonItems from './AmazonItems';
 
 export default class CodingChallenge extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            activeTab: 'Challenges'
+            activeTab: 'Prizes'
         }
     }
     
     render() {
-        return <Hero isSize="small" isColor="warning" id="section-stats-ribbon">
-            <HeroBody>
-                <Container>
-                    <Level>
-                        <LevelLeft>
-                            <LevelItem>
-                                <h2 className="is-size-2">Coding Challenge</h2>
-                            </LevelItem>
-                        </LevelLeft>
-                        <LevelRight>
-                            <LevelItem href="https://www.hackerrank.com/contests/devday-2018/leaderboard/1" target="_blank">
-                                full leaderboard
-                        </LevelItem>
-                        </LevelRight>
-                    </Level>
-
-                    <Tabs isBoxed>
-                        <TabList>
-                            
+        return <Section>
+            <Container>
+                <a name="coding-challenge"></a>
+                <h2 className="is-size-2">Coding Challenge</h2>
+                    <Tabs>
+                        <TabList isAlign="left">
                             <Tab className={this.state.activeTab == 'LeaderBoard' ? 'is-active' : ''} onClick={() => this.setState({activeTab: 'LeaderBoard'}) } >
                                 <TabLink>
                                     <span>Leaderboard</span>
@@ -52,10 +40,10 @@ export default class CodingChallenge extends React.Component {
 
                     {this.state.activeTab == 'LeaderBoard' &&  <LeaderBoard leaderBoard={this.props.leaderBoard} /> }
                     {this.state.activeTab == 'Challenges' &&  <Challenges challenges={this.props.challenges} /> }
-                    
+                    {this.state.activeTab == 'Prizes' &&  <AmazonItems items={this.props.prizes} /> }
                 </Container>
-            </HeroBody>
-        </Hero>
+            </Section>
+
     }
 
 }

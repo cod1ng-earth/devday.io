@@ -14,10 +14,14 @@ const IndexPage = ({data}) => {
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
     
-    <CodingChallenge leaderBoard={data.leaderBoard.edges} challenges={data.challenges.edges}/>
-
     <Talks talks={data.talks.edges}/>
     
+    <CodingChallenge 
+     leaderBoard={data.leaderBoard.edges} 
+     challenges={data.challenges.edges}
+     prizes={data.amazonPrizes.edges}
+     />
+
     <Impressions images={data.impressions.edges} />
     
     <Newsletter />
@@ -54,7 +58,7 @@ export const query = graphql`
       }
     }
 
-    impressions: allCloudinaryImage(limit: 4, sort: {fields: [bytes], order: ASC})  {
+    impressions: allCloudinaryImage(sort: {fields: [bytes], order: ASC})  {
       edges {
         node {
           width
@@ -96,6 +100,52 @@ export const query = graphql`
           name,
           path,
           difficulty
+        }
+      }
+    },
+
+    amazonPrizes: allAmazonProduct {
+      edges {
+        node {
+          ASIN
+          DetailPageURL
+          ItemAttributes {
+            Title
+            Binding
+            ISBN
+            NumberOfPages
+            PublicationDate
+            Publisher
+          }
+          ItemLinks {
+            ItemLink {
+              URL
+              Description
+            }
+          }
+          Images {
+            s {
+              url
+            }
+            m {
+              url
+            }
+            l {
+              url
+            }
+          }
+          OfferSummary {
+            LowestNewPrice {
+              FormattedPrice
+            }
+            LowestUsedPrice {
+              FormattedPrice
+            }
+            TotalNew
+            TotalUsed
+            TotalCollectible
+            TotalRefurbished
+          }              
         }
       }
     },

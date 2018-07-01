@@ -52,6 +52,10 @@ export default class AppHeader extends React.Component {
             Talks
           </Link>
           
+          <Link className="navbar-item" activeClass="active" to="coding-challenge" spy={true} smooth={true} offset={-100} duration={500}>
+            Coding Challenge
+          </Link>
+
           <Link className="navbar-item" activeClass="active" to="impressions" spy={true} smooth={true} offset={-100} duration={500}>
             Impressions
           </Link>
