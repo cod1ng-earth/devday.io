@@ -1,6 +1,5 @@
 import React from 'react'
 import {Hero, HeroHeader, HeroBody, HeroFooter, Container, Content, Columns, Column, Image } from 'bloomer'
-import mainLogo from '../img/devday18-logo-berlin-faro.svg'
 import keyVisual from '../img/devday18-keyvisual.svg'
 
 const MasterTeaser = ({content}) => {

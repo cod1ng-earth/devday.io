@@ -15,6 +15,8 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    'gatsby-transformer-remark',
+    'gatsby-transformer-json',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,7 +31,6 @@ module.exports = {
         accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN
       },
     },
-    'gatsby-transformer-remark',
     {
       resolve: "gatsby-source-cloudinary",
       options: {

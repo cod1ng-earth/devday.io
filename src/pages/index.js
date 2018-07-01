@@ -6,12 +6,15 @@ import StatsRibbon from '../components/StatsRibbon';
 import Talks from '../components/Talks';
 import Impressions from '../components/Impressions';
 import Newsletter from '../components/Newsletter';
+import CodingChallenge from '../components/CodingChallenge';
 
 const IndexPage = ({data}) => {
 
   return <div>
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
+    
+    <CodingChallenge leaderBoard={data.leaderBoard.edges}/>
     <Talks talks={data.talks.edges}/>
     
     <Impressions images={data.impressions.edges} />
@@ -50,7 +53,7 @@ export const query = graphql`
       }
     }
 
-    impressions: allCloudinaryImage(sort: {fields: [bytes], order: ASC})  {
+    impressions: allCloudinaryImage(limit: 4, sort: {fields: [bytes], order: ASC})  {
       edges {
         node {
           width
@@ -71,6 +74,17 @@ export const query = graphql`
             }
           }
           tags
+        }
+      }
+    }
+
+    leaderBoard: allCodingChallengeLeaderboardJson {
+      edges {
+        node {
+          user,
+          time,
+          score,
+          country
         }
       }
     }
