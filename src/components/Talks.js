@@ -69,7 +69,7 @@ const Speakers = ({speakers}) => {
       //yep that's ugly. 
       setTimeout( () => {
         scroller.scrollTo(`talk-${talkId}`, {
-          offset: -50,
+          offset: -100,
           duration: 400,
           smooth: 'easeInOut'
         })
