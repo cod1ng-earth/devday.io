@@ -1,0 +1,68 @@
+$logo_default_transform: perspective(200px) translateZ(-10px) rotateX(4deg) rotateY(-50deg);
+
+nav.navbar {
+    //min-height: 4rem;
+    font-weight: 500;
+    @include from($tablet) {
+     //   min-height: 6rem;
+    }
+    &.is-transparent {
+        background: none;
+    }
+    &.is-small {
+        .logo_comp {
+            transform: scale(1.8) $logo_default_transform;
+        }
+    }
+    .navbar-burger {
+        color: white;
+        span {
+            height: 2px
+        }
+    }
+    .navbar-item {
+        text-align: right;
+    }
+}
+
+.logo_comp {
+    position: absolute;
+    //margin-left: -2rem;
+    margin-top: 2rem;
+    img {
+        width:80px;
+    }
+    transition: all ease-in-out 0.3s;
+    &_dev, &_day {
+        transition: all ease-in-out 0.3s;
+    }
+    transform: scale(1.5) $logo_default_transform;
+
+    @include from($tablet) {
+        margin-top: 2rem;
+        transform: scale(1.75) $logo_default_transform;
+    }
+
+    @include from($desktop) {
+        transform: scale(2.0) $logo_default_transform;
+    }
+    
+    .logo_comp_dev {
+        transform:perspective(200px) translateY(0px) rotateX(35deg);
+    }
+    
+    .logo_comp_day {
+        transform:perspective(200px) rotateX(-35deg);
+    }
+
+    &:hover {
+        .logo_comp_dev {
+            transform: perspective(200px) rotateX(-35deg) ;
+        }
+        .logo_comp_day {
+            transform: perspective(200px) rotateX(35deg);
+        }
+    }
+
+}
+

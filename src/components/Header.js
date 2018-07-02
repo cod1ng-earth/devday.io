@@ -1,16 +1,30 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import { Container, Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarStart, NavbarLink, NavbarDropdown, NavbarDivider, NavbarEnd, Icon, Field, Control, Button } from 'bloomer'
-const brand = "";
+import { Container, Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarStart, NavbarEnd, Icon, Field, Control, Button } from 'bloomer'
+import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import imgDev from '../img/dev.svg'
+import imgDay from '../img/day.svg'
 
 export default class AppHeader extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      isActive: false
+      isActive: false,
+      scrollPos: 0
     }
     this.onClickNav = this.onClickNav.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  handleScroll(e) {
+    this.setState({scrollPos: window.scrollY })
   }
 
   onClickNav() {
@@ -20,10 +34,11 @@ export default class AppHeader extends React.Component {
   }
 
   render() {
-    return <Navbar style={{  }} className="is-primary is-fixed-top">
+    return <Navbar className={(this.state.scrollPos < 400 ? "is-transparent" : "is-small") + " is-fixed-top"}>
       <NavbarBrand>
-          <NavbarItem>
-              <img src={brand} style={{ }} /> devday
+          <NavbarItem className="logo_comp">
+              <img className="logo_comp_dev" src={imgDev}/>
+              <img className="logo_comp_day" src={imgDay}/>
           </NavbarItem>
           <NavbarBurger isActive={this.state.isActive} onClick={this.onClickNav} />
       </NavbarBrand>
@@ -34,10 +49,19 @@ export default class AppHeader extends React.Component {
         </NavbarStart>
 
         <NavbarEnd>
-            <NavbarItem href='#/'>Event</NavbarItem>
-            <NavbarItem href='#/'>Speakers</NavbarItem>
-            <NavbarItem href='#/'>Venue</NavbarItem>
-            <NavbarItem href='#/'>Contact</NavbarItem>
+          
+          <Link className="navbar-item" activeClass="active" to="talks" spy={true} smooth={true} offset={-100} duration={500}>
+            Talks
+          </Link>
+          
+          <Link className="navbar-item" activeClass="active" to="coding-challenge" spy={true} smooth={true} offset={-100} duration={500}>
+            Coding Challenge
+          </Link>
+
+          <Link className="navbar-item" activeClass="active" to="impressions" spy={true} smooth={true} offset={-100} duration={500}>
+            Impressions
+          </Link>
+          
         </NavbarEnd>
 
       </NavbarMenu>

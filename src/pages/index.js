@@ -1,27 +1,31 @@
-import React from 'react'
+import React, { Children } from 'react'
 import Link from 'gatsby-link'
-import { Container, Title, Hero, HeroBody } from 'bloomer'
+import { Container, Title, Hero, HeroBody, Image, Column, Columns, Media, MediaLeft, MediaContent, Content } from 'bloomer'
 import MasterTeaser from '../components/MasterTeaser';
-import Tickets from '../components/Tickets';
-import About from '../components/About';
-import Schedule from '../components/Schedule';
-import Speakers from '../components/Speakers';
+import StatsRibbon from '../components/StatsRibbon';
+import Talks from '../components/Talks';
+import Impressions from '../components/Impressions';
+import Newsletter from '../components/Newsletter';
+import CodingChallenge from '../components/CodingChallenge/CodingChallenge';
 
 const IndexPage = ({data}) => {
-  
+
   return <div>
     <MasterTeaser content={data.masterTeaser.html}/>
-    <Tickets />
-    <About content={data.about}/>
-    <Schedule edges={data.talks.edges} />
-    <Speakers speakers={data.speakers.edges} />
-    <Hero isSize="medium" isColor="white">
-        <HeroBody>
-          <Container>
-              <h2 className="is-size-2">Partners</h2>
-          </Container>
-        </HeroBody>
-    </Hero>
+    <StatsRibbon />
+    
+    <Talks talks={data.talks.edges.filter(e => (e.node.location != null) )}/>
+    
+    <CodingChallenge 
+     leaderBoard={data.leaderBoard.edges} 
+     challenges={data.challenges.edges}
+     prizes={data.amazonPrizes.edges}
+     />
+
+    <Impressions images={data.impressions.edges} />
+    
+    <Newsletter />
+
     </div>;
 }
 
@@ -47,38 +51,83 @@ export const query = graphql`
       }
     }
 
-    speakers: allContentfulSpeaker {
-        edges {
-          node {
-            id
-            name
-            position
-            bio {
-              bio
-            }
-            image {
-              id
-              resolutions {
-                src
-              }
+    impressions: allCloudinaryImage(filter: {
+      public_id: { ne: "sample" }
+    }, sort: {fields: [bytes], order: ASC})  {
+      edges {
+        node {
+          width
+          height
+          secure_url
+          public_id
+          type
+          format
+          scaled_image_url
+          thumb_dims {
+            w
+            h
+          }
+          context {
+            custom {
+              alt
+              caption
             }
           }
+          tags
         }
+      }
     }
 
-    talks: allContentfulTalk {
+    leaderBoard: allCodingChallengeLeaderboardJson {
+      edges {
+        node {
+          user,
+          time,
+          score,
+          country
+        }
+      }
+    },
+
+    challenges: allCodingChallengeChallengesJson {
+      edges {
+        node {
+          name,
+          path,
+          difficulty
+        }
+      }
+    },
+
+    amazonPrizes: allCodingChallengePrizesJson {
+      edges {
+        node {
+          title
+          author
+          imageUrl
+          link
+          asin
+        } 
+      }
+    },
+
+    talks: allContentfulTalk(sort: {fields: [slotTime], order: ASC}) {
       edges {
         node {
           id
           title
           slotTime
           location
-          createdAt
+          youtubeUrl
+          highlights {
+            highlights
+          }
+          statement {
+            statement
+          }
           abstract {
             childMarkdownRemark {
-              internal {
-                content
-              }
+              html
             }
           }
           speaker {
@@ -87,7 +136,7 @@ export const query = graphql`
             position
             image {
               title
-              resolutions {
+              resolutions(width: 320) {
                 width
                 height
                 src
@@ -95,10 +144,8 @@ export const query = graphql`
             }
             bio {
               childMarkdownRemark {
-                internal {
-                  content
-                }
-              }
+                html
+              } 
             }
           }
           

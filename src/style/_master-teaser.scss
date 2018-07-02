@@ -1,0 +1,42 @@
+#section-master-teaser {
+    text-align: center;
+    position: relative;
+    box-shadow: 0px -4px 4px 4px $black;
+
+    @include until($tablet) {
+        padding-top: 4rem; 
+    }
+    
+    h1 {
+        font-size: $size-1;
+        small {
+            font-size: $size-3;
+            display: block;
+        }
+    }
+
+    h2 {
+        font-weight: 800;
+        color: $secondary;
+        margin-top:0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .hero-body {
+        overflow: hidden;
+        position: relative;
+        .key-visual {
+            position: absolute;
+            width: 100%;
+            max-width: 600px;
+            left: 0%;
+            top: 0%;
+            opacity: 0.3;
+            @include from($tablet) {
+                left: 30%;
+                top: 10%;
+            }
+        }
+    }
+    
+}

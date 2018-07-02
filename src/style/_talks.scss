@@ -1,0 +1,16 @@
+#section-talks {
+    .image {
+        overflow: hidden;
+    } 
+    .small {
+        font-size: $size-7;
+        max-height: 10rem;
+        overflow: hidden;
+    }
+    blockquote {
+        font-size: $size-5;
+        font-weight: 400;
+        color: $grey-light;
+        margin-bottom:1.5rem;
+    }
+}
