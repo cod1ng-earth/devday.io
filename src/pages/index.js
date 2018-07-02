@@ -99,49 +99,15 @@ export const query = graphql`
       }
     },
 
-    amazonPrizes: allAmazonProduct {
+    amazonPrizes: allCodingChallengePrizesJson {
       edges {
         node {
-          ASIN
-          DetailPageURL
-          ItemAttributes {
-            Title
-            Binding
-            ISBN
-            NumberOfPages
-            PublicationDate
-            Publisher
-          }
-          ItemLinks {
-            ItemLink {
-              URL
-              Description
-            }
-          }
-          Images {
-            s {
-              url
-            }
-            m {
-              url
-            }
-            l {
-              url
-            }
-          }
-          OfferSummary {
-            LowestNewPrice {
-              FormattedPrice
-            }
-            LowestUsedPrice {
-              FormattedPrice
-            }
-            TotalNew
-            TotalUsed
-            TotalCollectible
-            TotalRefurbished
-          }              
-        }
+          title
+          author
+          imageUrl
+          link
+          asin
+        } 
       }
     },
 

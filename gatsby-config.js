@@ -38,16 +38,6 @@ module.exports = {
         api_secret: process.env.GATSBY_CLOUDINARY_API_SECRET,
         cloud_name: process.env.GATSBY_CLOUDINARY_CLOUD_NAME,
       },
-    },
-    {
-      resolve: "gatsby-source-amazon-partnernet",
-      options: {
-        awsId: process.env.GATSBY_AMAZON_PARTNERNET_ACCESS_KEY,
-        awsSecret: process.env.GATSBY_AMAZON_PARTNERNET_SECRET,
-        assocId: process.env.GATSBY_AMAZON_ASSOC_ID,
-        locale:  process.env.GATSBY_AMAZON_LOCALE,
-        asins: process.env.GATSBY_AMAZON_ASINS
-      },
     }
     
   ],

@@ -34,7 +34,7 @@
     "dev": "gatsby develop -o",
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd plugins/gatsby-source-cloudinary && npm i && cd ../gatsby-source-amazon-partnernet && npm i"
+    "postinstall": "cd plugins/gatsby-source-cloudinary && npm i"
   },
   "devDependencies": {
     "prettier": "^1.12.1"
