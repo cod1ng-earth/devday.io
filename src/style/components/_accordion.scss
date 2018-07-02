@@ -16,10 +16,13 @@
                 
             }
         }
+        & + .accordion-body {
+            transition: max-height 0.4s $easing;
+        }
     }
     &.is-active {
         .accordion-body {
-            max-height: 150em;
+            max-height: 200em;
         }
         .accordion-header button.toggle {
             &::before {
@@ -27,4 +30,6 @@
             }
         }
     }
+
+
 }

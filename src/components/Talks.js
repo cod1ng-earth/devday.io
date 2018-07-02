@@ -1,6 +1,7 @@
 import React, { Children } from 'react'
 import { Container, Title, Hero, HeroBody, Image, Column, Columns, Media, MediaLeft, MediaContent, Content } from 'bloomer'
 import ResponsiveEmbed from 'react-responsive-embed';
+import { animateScroll as scroll,  scroller } from 'react-scroll'
 
 const Speakers = ({speakers}) => {
     const items = speakers.map(sp => {
@@ -28,7 +29,7 @@ const Speakers = ({speakers}) => {
 
     render() {
 
-      return  <article className={"accordion " + (this.props.isActive ? 'is-active' : '') }>
+      return  <article className={"element accordion " + (this.props.isActive ? 'is-active' : '') } id={"talk-" + this.props.talk.id}>
           <div className="accordion-header toggle" onClick={() => this.props.onOpen(this.props.talk.id)}>
             <p><strong>{this.props.talk.speaker[0].name}{this.props.talk.speaker.length > 1 ? " e.a." : ""}</strong>: {this.props.talk.title}</p>
             <button className="toggle" aria-label="toggle"></button>
@@ -64,7 +65,16 @@ const Speakers = ({speakers}) => {
       } else {
         this.setState({activeTalkId: talkId});
       }
-    }
+
+      //yep that's ugly. 
+      setTimeout( () => {
+        scroller.scrollTo(`talk-${talkId}`, {
+          offset: -50,
+          duration: 400,
+          smooth: 'easeInOut'
+        })
+        }, 450)
+      }
     
     render() {
       const listItems = this.props.talks.map(edge => {
