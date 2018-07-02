@@ -41,27 +41,19 @@ export default class Impressions extends React.Component {
         return <Section id="section-impressions">
                     <a name="impressions"></a>
                     <Container>
-                        <Level>
-                            <LevelLeft>
-                                <LevelItem>
-                                    <h2 className="is-size-2">Impressions</h2>
-                                </LevelItem>
-                            </LevelLeft>
-                            <LevelRight>
-                                <LevelItem>
-                                    <Button isLink onClick={() => this.setState({extended: !this.state.extended})}>show all</Button>
-                                </LevelItem>
-                            </LevelRight>
-                        </Level>
-                    </Container>
-                        <StackGrid 
-                            columnWidth={320} duration={600} monitorImagesLoaded={true} appearDelay={150}
+                    <h2 className="is-size-2">Impressions</h2>
+                    <StackGrid 
+                            columnWidth={280} duration={600} monitorImagesLoaded={true} appearDelay={150}
                             appear={scaleDown.appear}
                             appeared={scaleDown.appeared}
                             enter={scaleDown.enter}
                             entered={scaleDown.entered}
                             leaved={scaleDown.leaved}
                         >{imgs}</StackGrid>
+                        {!this.state.extended && 
+                            <Button isFullWidth onClick={() => this.setState({extended: true})}>show all</Button>
+                        }
+                    </Container>
 
                         {isOpen && (
                         <Lightbox

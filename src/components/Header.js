@@ -1,7 +1,9 @@
 import React from 'react'
 import { Container, Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarStart, NavbarEnd, Icon, Field, Control, Button } from 'bloomer'
 import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
- 
+import imgDev from '../img/dev.svg'
+import imgDay from '../img/day.svg'
+
 export default class AppHeader extends React.Component {
 
   constructor(props) {
@@ -32,11 +34,11 @@ export default class AppHeader extends React.Component {
   }
 
   render() {
-    return <Navbar className={(this.state.scrollPos < 400 ? "is-transparent" : "is-small") + " is-primary is-fixed-top"}>
+    return <Navbar className={(this.state.scrollPos < 400 ? "is-transparent" : "is-small") + " is-fixed-top"}>
       <NavbarBrand>
           <NavbarItem className="logo_comp">
-              <span className="logo_comp_dev">Dev</span>
-              <span className="logo_comp_day">Day</span>
+              <img className="logo_comp_dev" src={imgDev}/>
+              <img className="logo_comp_day" src={imgDay}/>
           </NavbarItem>
           <NavbarBurger isActive={this.state.isActive} onClick={this.onClickNav} />
       </NavbarBrand>

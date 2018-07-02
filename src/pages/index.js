@@ -26,13 +26,6 @@ const IndexPage = ({data}) => {
     
     <Newsletter />
 
-    <Hero isSize="medium" isColor="white">
-        <HeroBody>
-          <Container style={{width: "100%"}}>
-              <h2 className="is-size-2">Partners</h2>
-          </Container>
-        </HeroBody>
-    </Hero>
     </div>;
 }
 
@@ -58,7 +51,9 @@ export const query = graphql`
       }
     }
 
-    impressions: allCloudinaryImage(sort: {fields: [bytes], order: ASC})  {
+    impressions: allCloudinaryImage(filter: {
+      public_id: { ne: "sample" }
+    }, sort: {fields: [bytes], order: ASC})  {
       edges {
         node {
           width
