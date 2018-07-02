@@ -14,7 +14,7 @@ const IndexPage = ({data}) => {
     <MasterTeaser content={data.masterTeaser.html}/>
     <StatsRibbon />
     
-    <Talks talks={data.talks.edges}/>
+    <Talks talks={data.talks.edges.filter(e => (e.node.location != null) )}/>
     
     <CodingChallenge 
      leaderBoard={data.leaderBoard.edges} 

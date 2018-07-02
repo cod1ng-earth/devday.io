@@ -1,6 +1,5 @@
 import React, { Children } from 'react'
 import { Container, Title, Hero, HeroBody, Image, Column, Columns, Media, MediaLeft, MediaContent, Content } from 'bloomer'
-import bulmaAccordion from 'bulma-accordion';
 import ResponsiveEmbed from 'react-responsive-embed';
 
 const Speakers = ({speakers}) => {
@@ -25,42 +24,52 @@ const Speakers = ({speakers}) => {
     </Columns>
   }
   
-  const Talk = ({talk, isActive}) => (
-    <article className={"accordion " + (isActive ? 'is-active' : '') }>
-        <div className="accordion-header toggle">
-          <p><strong>{talk.speaker[0].name}{talk.speaker.length > 1 ? " e.a." : ""}</strong>: {talk.title}</p>
-          <button className="toggle" aria-label="toggle"></button>
-        </div>
-        <div className="accordion-body">
-          <div className="accordion-content">
-            <Speakers speakers={talk.speaker} />
-            <blockquote>{talk.highlights.highlights}</blockquote>
-            <Content dangerouslySetInnerHTML={{__html: talk.abstract.childMarkdownRemark.html}} />
-            <blockquote>{talk.statement.statement}</blockquote>
-            {talk.youtubeUrl && isActive &&
-              <ResponsiveEmbed src={talk.youtubeUrl} allowFullScreen />
-            }
+  class Talk extends React.Component {
+
+    render() {
+
+      return  <article className={"accordion " + (this.props.isActive ? 'is-active' : '') }>
+          <div className="accordion-header toggle" onClick={() => this.props.onOpen(this.props.talk.id)}>
+            <p><strong>{this.props.talk.speaker[0].name}{this.props.talk.speaker.length > 1 ? " e.a." : ""}</strong>: {this.props.talk.title}</p>
+            <button className="toggle" aria-label="toggle"></button>
           </div>
-        </div>
-      </article>
-    );
-  
+          <div className="accordion-body">
+            <div className="accordion-content">
+              <Speakers speakers={this.props.talk.speaker} />
+              <blockquote>{this.props.talk.highlights.highlights}</blockquote>
+              <Content dangerouslySetInnerHTML={{__html: this.props.talk.abstract.childMarkdownRemark.html}} />
+              <blockquote>{this.props.talk.statement.statement}</blockquote>
+              {this.props.talk.youtubeUrl && this.props.isActive &&
+                <ResponsiveEmbed src={this.props.talk.youtubeUrl} allowFullScreen />
+              }
+            </div>
+          </div>
+        </article>
+    }
+  }
+
   export default class Talks extends React.Component {
     
-    componentDidMount() {
-      const acc = new bulmaAccordion(this.accordions)
-      /*  acc.items.forEach(item => {
-        https://github.com/Wikiki/bulma-accordion/blob/master/src/js/index.js
-        item.addEventListener('click', this.yeeep, false);
-      });
-      */
+    constructor(props) {
+        super(props);
+        this.state = {
+          activeTalkId: props.talks[0].node.id
+        }
+        this.handleOpened = this.handleOpened.bind(this);
     }
-  
+
+    handleOpened(talkId) {
+      if (this.state.activeTalkId == talkId) {
+        this.setState({activeTalkId: null});
+      } else {
+        this.setState({activeTalkId: talkId});
+      }
+    }
+    
     render() {
-      let q = 0;
-      const listItems = this.props.talks.filter(edge => (edge.node.location != null) ).map(edge => {
+      const listItems = this.props.talks.map(edge => {
         const talk = edge.node;
-        return <Talk key={talk.id} talk={talk} isActive={q++==0}></Talk>
+        return <Talk key={talk.id} talk={talk} isActive={talk.id==this.state.activeTalkId} onOpen={this.handleOpened}></Talk>
       });
   
       return <Hero isColor="dark">
@@ -69,7 +78,7 @@ const Speakers = ({speakers}) => {
                         <a name="talks"></a>
                         <h2 className="is-size-2">Talks</h2>
               
-                        <section className="accordions" id="section-talks" ref={(accs) => { this.accordions = accs; }}>
+                        <section className="accordions" id="section-talks">
                             {listItems}
                         </section>
                         </Container>
