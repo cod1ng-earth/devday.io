@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero, HeroBody, Container, Columns, Column, Title, Field, Label, Control, Input, Radio, Button } from 'bloomer'
+import { Hero, HeroBody, Container, Columns, Column, Title, Field, Label, Control, Icon, Input, Radio, Button } from 'bloomer'
 
 
 export default ({ content }) => (
@@ -17,12 +17,15 @@ export default ({ content }) => (
               <input type="hidden" name="form-name" value="devday-newsletter" />  
               <Field>
                 <Label>Your Email address</Label>
-                <Control>
-                    <Input placeholder='email address' type="email"  name="email" className="required email" autoComplete='email' />
+                <Control hasIcons>
+                  <Icon isSize='small' isAlign='left'>
+                    <span className="fa fa-at" aria-hidden="true" />
+                  </Icon>
+                  <Input placeholder='email address' type="email"  name="email" className="required email" autoComplete='email' />
                 </Control>
               </Field>
 
-              <Field>
+              <Field required>
                 <Label>Your name</Label>
                 <Control>
                     <Input placeholder='how should we call you?' type="text" checked="" name="name" className="" autoComplete='given-name' />
@@ -31,17 +34,16 @@ export default ({ content }) => (
               <p style={{display: "none"}}>
                 <label>Don’t fill this out if you're human: <input name="lasst-nam3" /></label>
               </p>
-              <Field>
-                <Label>Bitte bestätigen</Label>
+              <Field className="fld_pad">
                 <input className="is-checkradio is-white" type="radio" id="accept_privacy" name="accept_privacy" value="privacy_accepted" />
                 <label htmlFor="accept_privacy">I've read and understood the <a href="https://turbinekreuzberg.com/en/datenschutzerklaerung" target="_blank">data privacy rules</a></label>
               </Field>
               
               <div data-netlify-recaptcha></div>
 
-              <Field >
+              <Field className="fld_pad">
                   <Control>
-                      <Button type="submit" isColor='info' isFullWidth  value="Subscribe" name="subscribe">Subscribe</Button>
+                      <Button type="submit"  isSize='large' isColor='info' isFullWidth  value="Subscribe" name="subscribe">Subscribe</Button>
                   </Control>
               </Field>
 

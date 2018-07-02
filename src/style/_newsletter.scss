@@ -1,5 +1,11 @@
 #section-newsletter {
     label {
         color: $white-ter;
+        a {
+            text-decoration: underline;
+        }
+    }
+    .fld_pad {
+        margin-top: $size-2;
     }
 }
