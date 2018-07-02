@@ -9,67 +9,39 @@ export default ({ content }) => (
       <Container>
         
         <Columns id="mc_embed_signup">
-          <Column isSize="1/2" isOffset="1/4" id="mc_embed_signup_scroll">
+          <Column isSize="1/2" isOffset="1/4" id="">
 
-          <Title isSize={2}>Subscribe to our mailing list</Title>
+          <Title isSize={2}>Remind me when Dev Day 19 is happening!</Title>
                     
-            <form action="https://turbinekreuzberg.us11.list-manage.com/subscribe/post?u=05926695701a0c84bb46a9565&amp;id=590c4918b0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
-
+            <form name="devday-newsletter" method="POST" data-netlify="true" data-netlify-honeypot="lasst-nam3">
+              <input type="hidden" name="form-name" value="devday-newsletter" />  
               <Field>
-                <Label>E-Mail-Adresse</Label>
+                <Label>Your Email address</Label>
                 <Control>
-                    <Input placeholder='E-Mail-Adresse' type="email"  name="EMAIL" className="required email" id="mce-EMAIL" autoComplete='email' />
+                    <Input placeholder='email address' type="email"  name="email" className="required email" autoComplete='email' />
                 </Control>
               </Field>
 
               <Field>
-                <Label>Vorname</Label>
+                <Label>Your name</Label>
                 <Control>
-                    <Input placeholder='Vorname' type="text"  name="FNAME" className="" id="mce-FNAME" autoComplete='given-name' />
+                    <Input placeholder='how should we call you?' type="text" checked="" name="name" className="" autoComplete='given-name' />
                 </Control>
               </Field>
-
+              <p style={{display: "none"}}>
+                <label>Don’t fill this out if you're human: <input name="lasst-nam3" /></label>
+              </p>
               <Field>
-                <Label>Nachname</Label>
-                <Control>
-                    <Input placeholder='Nachname' type="text"  name="LNAME" className="" id="mce-LNAME" autoComplete='family-name' />
-                </Control>
-              </Field>
-
-              <Field>
-                  <Label>Welche Newsletter sollen abonniert werden?</Label>
-                  
-                    <input type="radio" className="is-checkradio is-white" name="MMERGE4" id="mce-MMERGE4-0" value="Alle News von Turbine Kreuzberg"/>
-                    <label htmlFor="mce-MMERGE4-0">Alle News von Turbine Kreuzberg</label>
-                    <br />
-                    <input type="radio" className="is-checkradio is-white" name="MMERGE4" id="mce-MMERGE4-1" value="Nur Technologie News" />
-                    <label htmlFor="mce-MMERGE4-1">Nur Technologie News</label>
-                    <br />
-                    <input type="radio" className="is-checkradio is-white" name="MMERGE4" id="mce-MMERGE4-2" value="Nur Strategie und Innovation News" />
-                    <label htmlFor="mce-MMERGE4-2">Nur Strategie und Innovation News</label>
-                  
-              </Field>
-
-              <div className="field">
                 <Label>Bitte bestätigen</Label>
-                <input className="is-checkradio  is-white" id="mce-MMERGE3-0" type="radio" name="MMERGE3" value="Ja, ich stimme den Bestimmungen zum Datenschutz zu." />
-                <label htmlFor="mce-MMERGE3-0">Ja, ich stimme den Bestimmungen zum Datenschutz zu.</label>
-              </div>
+                <input className="is-checkradio is-white" type="radio" id="accept_privacy" name="accept_privacy" value="privacy_accepted" />
+                <label htmlFor="accept_privacy">I've read and understood the <a href="https://turbinekreuzberg.com/en/datenschutzerklaerung" target="_blank">data privacy rules</a></label>
+              </Field>
+              
+              <div data-netlify-recaptcha></div>
 
-                <div id="mce-responses" className="clear">
-                  <div className="response" id="mce-error-response" style={{ display:"none" }}></div>
-                  <div className="response" id="mce-success-response" style={{ display:"none" }}></div>
-                </div>    
-                
-                {/*<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->*/}
-
-                <div style={{ position: "absolute", left: "-5000px", ariaHidden: true }}>
-                  <input type="text" name="b_05926695701a0c84bb46a9565_590c4918b0" tabIndex="-1" value="" />
-                </div>
-                
-                <Field >
+              <Field >
                   <Control>
-                      <Button type="submit" isColor='info' isFullWidth  value="Subscribe" name="subscribe" id="mc-embedded-subscribe">Subscribe</Button>
+                      <Button type="submit" isColor='info' isFullWidth  value="Subscribe" name="subscribe">Subscribe</Button>
                   </Control>
               </Field>
 
